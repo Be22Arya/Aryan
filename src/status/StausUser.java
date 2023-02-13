@@ -11,24 +11,38 @@ package status;
  */
 public class StausUser 
 {
-   public void statusDetail(String code)
-{
-switch(code.toUpperCase())
-        {
-        case "ZERO": System.out.println("REJECTED");
-        break;
-        case "ONE": System.out.println("PENDING");
-        break;
-        case "TWO":
-        System.out.println("PROCESSING");
-        break;
-        case "THREE": 
-            System.out.println("APPROVED");
-        break;
-        default:
-         System.out.println("NOT VALID CODE");
-        break;
-        }
-}
- 
+	
+	private StatusCode currentView;
+	
+	public enum StatusCode {
+	    ZERO, ONE, TWO, THREE,NONE
+	};
+
+	    public void statusDetail(String code) {
+
+	    	switch (getCurrentView()) {
+    	        case ZERO : System.out.println("REJECTED");
+    	        break;
+    	        case ONE: System.out.println("PENDING");
+    	        break;
+    	        case TWO:
+    	        System.out.println("PROCESSING");
+    	        break;
+    	        case THREE: 
+    	            System.out.println("APPROVED");
+    	        break;
+    	        default:
+    	         System.out.println("NOT VALID CODE");
+    	        break;
+    	     }
+	    }
+
+	    public void setCurrentView(StatusCode currentView) {
+	        this.currentView = currentView;
+	    }
+
+	    public StatusCode getCurrentView() {
+	        return currentView;
+	    }
+	
 }
